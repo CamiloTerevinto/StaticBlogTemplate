@@ -1,0 +1,22 @@
+﻿@using Markdig;
+@using Microsoft.AspNetCore.Hosting;
+
+@inject IWebHostEnvironment environment;
+
+@{
+    Layout = "_Layout";
+
+    // This assumes the name of the View/Markdown file is the same name as that of the Action in the Controller.
+    // If you want to use another structure, you can add a property to the ViewBag/ViewData.
+    string post = ViewContext.RouteData.Values["action"] + ".md";
+    var file = System.IO.File.ReadAllText(System.IO.Path.Combine(environment.ContentRootPath, "Posts", post));
+    var pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
+    var renderedMarkdown = Markdig.Markdown.ToHtml(file, pipeline);
+    IgnoreBody();
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="blog-post-wrapper">
+    @Html.Raw(renderedMarkdown)
+</div>
