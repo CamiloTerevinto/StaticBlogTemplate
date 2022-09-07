@@ -1,0 +1,23 @@
+
+name: .NET
+
+#on:
+#  push:
+#    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+    - name: Install the ssg tool
+      run: dotnet tool install terevintosoftware.staticsitegenerator.tool --global
+    - name: Build
+      run: dotnet build . -c Release
+    - name: Run the ssg tool
+      run: ssg --project ${GITHUB_WORKSPACE}/StaticBlogTemplate --output ${GITHUB_WORKSPACE}/out --route-casing KebabCase --assembly bin/Release/net6.0/StaticBlogTemplate.dll
