@@ -20,4 +20,4 @@ jobs:
     - name: Build
       run: dotnet build . -c Release
     - name: Run the ssg tool
-      run: ssg --project ${GITHUB_WORKSPACE}/StaticBlogTemplate --output ${GITHUB_WORKSPACE}/out --route-casing KebabCase --assembly bin/Release/net6.0/StaticBlogTemplate.dll
+      run: ssg --project ${GITHUB_WORKSPACE} --output ${GITHUB_WORKSPACE}/out --route-casing KebabCase --assembly bin/Release/net6.0/StaticBlogTemplate.dll
