@@ -1,3 +1,5 @@
+using StaticBlogTemplate.Utilities;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,6 +7,9 @@ var mvcBuilder = builder.Services.AddControllersWithViews();
 
 #if DEBUG
 mvcBuilder.AddRazorRuntimeCompilation();
+
+RssCreator.Generate();
+SitemapCreator.Generate();
 #endif
 
 var app = builder.Build();

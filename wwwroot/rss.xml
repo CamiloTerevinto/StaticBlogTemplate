@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>My Super Blog</title>
+        <link>https://www.YOUR_BASE_URL.com/</link>
+        <description>The description for the blog content of my site</description>
+        <lastBuildDate>Thu, 23 Feb 2023 00:00:00 GMT</lastBuildDate>
+        <atom:link href="https://www.YOUR_BASE_URL.com/rss.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Welcome to my new blog!</title>
+            <link>https://www.YOUR_BASE_URL.com/posts/welcome-to-my-blog</link>
+            <guid>https://www.YOUR_BASE_URL.com/posts/welcome-to-my-blog</guid>
+            <pubDate>Wed, 01 Feb 2023 00:00:00 GMT</pubDate>
+            <description>This is my new blog, hosted statically using the .NET Static Site Generator tool!</description>
+        </item>
+    </channel>
+</rss>

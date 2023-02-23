@@ -1,15 +1,23 @@
-﻿@{
-    ViewData["Title"] = "Blog";
+﻿@using StaticBlogTemplate.Utilities;
+
+@{
+    ViewBag.Title = "Blog";
+    ViewBag.Description = "Find all of my posts as they come!";
+    ViewBag.RelativeUrl = "blog";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome to my blog</h1>
+    <h4>Find all of my new posts here :)</h4>
 </div>
 
 <div>
     <ul>
-        <li>
-            <a asp-controller="Posts" asp-action="WelcomeToMyBlog">Welcome To My Blog!</a>
-        </li>
+        @foreach (var post in PostManager.Posts)
+        {
+            <li>
+                <a asp-controller="Posts" asp-action="@post.Key">@post.Value.Title</a>
+            </li>
+        }        
     </ul>
 </div>

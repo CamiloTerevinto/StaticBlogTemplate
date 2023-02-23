@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <url>
+        <loc>https://www.YOUR_BASE_URL.com/</loc>
+        <lastmod>2023-02-10</lastmod>
+    </url>
+    <url>
+        <loc>https://www.YOUR_BASE_URL.com/posts/welcome-to-my-blog</loc>
+        <lastmod>10/02/2023 00:00:00</lastmod>
+    </url>
+</urlset>

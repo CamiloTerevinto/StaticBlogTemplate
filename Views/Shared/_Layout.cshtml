@@ -1,9 +1,26 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var relativeUrl = ViewBag.RelativeUrl;
+    var fullUrl = $"https://www.YOUR_BASE_URL.com/{relativeUrl}";
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - StaticBlogTemplate</title>
+    <title>@ViewBag.Title - Static Blog Template</title>
+    <meta name="description" content="@ViewBag.Description">
+    <meta property="og:title" content="@ViewBag.Title">
+    <meta property="og:description" content="@ViewBag.Description">
+    <meta property="og:url" content="@fullUrl">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Static Blog Template">
+    <meta name="twitter:card" value="summary">
+    <meta name="twitter:site" content="@@YourTwitterHandle" />
+    <meta name="twitter:title" content="@ViewBag.Title" />
+    <meta name="twitter:description" content="@ViewBag.Description" />
+    <link rel="canonical" href="@fullUrl">
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
@@ -40,7 +57,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - StaticBlogTemplate - <a asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2023 - Static Blog Template - <a asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

@@ -1,5 +1,5 @@
-﻿@using Markdig;
-@using Microsoft.AspNetCore.Hosting;
+﻿@using Microsoft.AspNetCore.Hosting;
+@using StaticBlogTemplate.Utilities;
 
 @inject IWebHostEnvironment environment;
 
@@ -8,10 +8,16 @@
 
     // This assumes the name of the View/Markdown file is the same name as that of the Action in the Controller.
     // If you want to use another structure, you can add a property to the ViewBag/ViewData.
-    string post = ViewContext.RouteData.Values["action"] + ".md";
-    var file = System.IO.File.ReadAllText(System.IO.Path.Combine(environment.ContentRootPath, "Posts", post));
-    var pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().UseBootstrap().Build();
-    var renderedMarkdown = Markdig.Markdown.ToHtml(file, pipeline);
+    var postName = ViewContext.RouteData.Values["action"]!.ToString();
+    string markdownFilename = postName + ".md";
+    var renderedMarkdown = PostManager.GetRenderedMarkdown(environment, markdownFilename);
+
+    var post = PostManager.Posts[postName];
+
+    ViewBag.Title = post.Title;
+    ViewBag.Description = post.Description;
+    ViewBag.RelativeUrl = post.RelativeUrl;
+
     IgnoreBody();
 }
 
