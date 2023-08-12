@@ -1,6 +1,7 @@
-﻿@{
+﻿@using StaticBlogTemplate.Helpers;
+@{
     var relativeUrl = ViewBag.RelativeUrl;
-    var fullUrl = $"https://www.YOUR_BASE_URL.com/{relativeUrl}";
+    var fullUrl = $"{ConfigurationHelper.BaseUrl}/{relativeUrl}";
 }
 
 <!DOCTYPE html>
