@@ -1,3 +1,4 @@
+using StaticBlogTemplate.Helpers;
 using System.Text;
 
 namespace StaticBlogTemplate.Utilities;
@@ -19,7 +20,7 @@ public static class SitemapCreator
     </url>";
 
         var stringBuilder = new StringBuilder();
-        var baseUrl = $"https://www.YOUR_BASE_URL.com/";
+        var baseUrl = $"{ConfigurationHelper.BaseUrl}/";
 
         stringBuilder.AppendFormat(template, baseUrl, "2023-02-10");
 

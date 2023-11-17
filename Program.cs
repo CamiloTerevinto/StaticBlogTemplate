@@ -1,6 +1,9 @@
+using StaticBlogTemplate.Helpers;
 using StaticBlogTemplate.Utilities;
 
 var builder = WebApplication.CreateBuilder(args);
+
+ConfigurationHelper.Initialize(builder.Configuration);
 
 // Add services to the container.
 var mvcBuilder = builder.Services.AddControllersWithViews();

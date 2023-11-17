@@ -1,3 +1,4 @@
+using StaticBlogTemplate.Helpers;
 using System.Text;
 
 namespace StaticBlogTemplate.Utilities;
@@ -11,10 +12,10 @@ public static class RssCreator
 <rss version=""2.0"" xmlns:atom=""http://www.w3.org/2005/Atom"">
     <channel>
         <title>My Super Blog</title>
-        <link>https://www.YOUR_BASE_URL.com/</link>
+        <link>{ConfigurationHelper.BaseUrl}/</link>
         <description>The description for the blog content of my site</description>
         <lastBuildDate>{today.ToString("r")}</lastBuildDate>
-        <atom:link href=""https://www.YOUR_BASE_URL.com/rss.xml"" rel=""self"" type=""application/rss+xml"" />
+        <atom:link href=""{ConfigurationHelper.BaseUrl}/rss.xml"" rel=""self"" type=""application/rss+xml"" />
         {{0}}
     </channel>
 </rss>";
@@ -23,7 +24,7 @@ public static class RssCreator
 
         foreach (var post in PostManager.Posts)
         {
-            var fullUrl = $"https://www.YOUR_BASE_URL.com/{post.Value.RelativeUrl}";
+            var fullUrl = $"{ConfigurationHelper.BaseUrl}/{post.Value.RelativeUrl}";
 
             stringBuilder.Append($@"
         <item>
